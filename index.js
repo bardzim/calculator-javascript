@@ -4,5 +4,5 @@ const opts = ['*', '/', '+', '-', '9','8','7','6','5','4','3','2','1','0','.']; 
 const spec = ['*', '/', '+', '-'] // special funtion keys
 
 function init() {
-    document.title = "JavaScript Project"
+    document.title = "JavaScript Calculator"
 }
