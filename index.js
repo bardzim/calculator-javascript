@@ -58,6 +58,7 @@ function init() {
          else {
             output.value = eval(output.value)
         }
+        dec = output.value.includes('.')
     }
 
     function clrOutput() {
