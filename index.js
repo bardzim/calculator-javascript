@@ -42,18 +42,26 @@ function init() {
     btnMaker('=', evalOutput)
     btnMaker('C', clrOutput)
 
+    function cOut(v) {
+        output.style.border = v + ' 1px solid';
+        output.style.color = v;
+    }
+
     function evalOutput() {
-        output.style.border = 'black 1px solid';
+        cOut('black')
         console.log('=');
         if(output.value === '') {
-            output.style.border = 'red 1px solid';
-        } else {
+           cOut('red')
+        } else if (eva){
+           cOut('red')
+        }
+         else {
             output.value = eval(output.value)
         }
     }
 
     function clrOutput() {
-        output.style.border = 'black 1px solid';
+        cOut('black')
         output.value = '';
     }
 
@@ -74,14 +82,14 @@ function init() {
     //output keys in field
     function addOutput(e) {
         console.log(dec)
-        output.style.border = 'black 1px solid';
+        cOut('black')
         console.log(e.target.val);
         let char = e.target.val;
 
         if(char == '.') {
             if(dec){
                 char = '';
-                output.style.border = 'red 1px solid';
+                cOut('red')
             } else {
                 dec = true;
             }
