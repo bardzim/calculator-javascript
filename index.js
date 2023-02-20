@@ -7,6 +7,8 @@ const spec = ['*', '/', '+', '-'] // special funtion keys
 
 function init() {
     document.title = "JavaScript Calculator";
+    let dec = false;
+    let eva = false;
 
     //container for calculator
     const container = document.createElement('div');
@@ -71,9 +73,24 @@ function init() {
 
     //output keys in field
     function addOutput(e) {
-    output.style.border = 'black 1px solid';
+        console.log(dec)
+        output.style.border = 'black 1px solid';
         console.log(e.target.val);
         let char = e.target.val;
+
+        if(char == '.') {
+            if(dec){
+                char = '';
+                output.style.border = 'red 1px solid';
+            } else {
+                dec = true;
+            }
+        }
+
+        eva = spec.includes(char)
+        if(eva) {
+            dec=false;
+        }
         output.value += char;
     }
 
