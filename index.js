@@ -3,12 +3,10 @@ window.addEventListener('DOMContentLoaded', init)
 const opts = ['*', '/', '+', '-', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0', '.']; //all keys 
 const spec = ['*', '/', '+', '-'] // special funtion keys
 
-function addOutput(e) {
-    console.log(e)
-}
+
 
 function init() {
-    document.title = "JavaScript Calculator"
+    document.title = "JavaScript Calculator";
 
     //container for calculator
     const container = document.createElement('div');
@@ -51,6 +49,13 @@ function init() {
         btn.textContent = txt;
         btn.addEventListener('click', myFunction);
         main.appendChild(btn);
+    }
+
+    //output keys in field
+    function addOutput(e) {
+        console.log(e.target.val);
+        let char = e.target.val;
+        output.value += char;
     }
 
 }
