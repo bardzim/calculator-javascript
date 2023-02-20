@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', init)
 
-const opts = ['*', '/', '+', '-', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0', '.']; //all keys 
+const opts = ['*', '/', '+', '-', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0', '.']; // all keys 
 const spec = ['*', '/', '+', '-'] // special funtion keys
 
 
@@ -37,6 +37,24 @@ function init() {
         btnMaker(val, addOutput)
     });
 
+    btnMaker('=', evalOutput)
+    btnMaker('C', clrOutput)
+
+    function evalOutput() {
+        output.style.border = 'black 1px solid';
+        console.log('=');
+        if(output.value === '') {
+            output.style.border = 'red 1px solid';
+        } else {
+            output.value = eval(output.value)
+        }
+    }
+
+    function clrOutput() {
+        output.style.border = 'black 1px solid';
+        output.value = '';
+    }
+
     //make buttons and add events to buttons
     function btnMaker(txt, myFunction) {
         let btn = document.createElement('button');
@@ -53,6 +71,7 @@ function init() {
 
     //output keys in field
     function addOutput(e) {
+    output.style.border = 'black 1px solid';
         console.log(e.target.val);
         let char = e.target.val;
         output.value += char;
