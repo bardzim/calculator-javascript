@@ -1,7 +1,11 @@
 window.addEventListener('DOMContentLoaded', init)
 
-const opts = ['*', '/', '+', '-', '9','8','7','6','5','4','3','2','1','0','.']; //all keys 
+const opts = ['*', '/', '+', '-', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0', '.']; //all keys 
 const spec = ['*', '/', '+', '-'] // special funtion keys
+
+function addOutput(e) {
+    console.log(e)
+}
 
 function init() {
     document.title = "JavaScript Calculator"
@@ -27,6 +31,26 @@ function init() {
     const main = document.createElement('div');
     main.classList.add('main');
     main.style.width = '100%';
-    container.appendChild(main)
+    container.appendChild(main);
+
+    //iteration through the keys
+    opts.forEach(val => {
+        console.log(val)
+        btnMaker(val, addOutput)
+    });
+
+    //make buttons and add events to buttons
+    function btnMaker(txt, myFunction) {
+        let btn = document.createElement('button');
+        btn.setAttribute('type', 'buttom');
+        btn.style.width = '23%';
+        btn.style.lineHeight = '50px';
+        btn.style.margin = '1%';
+        btn.style.fontSize = '2em';
+        btn.val = txt;
+        btn.textContent = txt;
+        btn.addEventListener('click', myFunction);
+        main.appendChild(btn);
+    }
 
 }
